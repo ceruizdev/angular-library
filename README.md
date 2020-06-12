@@ -13,6 +13,6 @@ git clone https://github.com/ceruizdev/angular-library.git
    ng serve -o
 ```
 
-Recuearda modificar los endpoint en 
+Recuerda modificar los endpoints en 
  - environments/environment.ts
  - environments/environment.prod.ts
