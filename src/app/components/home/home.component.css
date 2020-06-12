@@ -1,0 +1,92 @@
+.homeContainer{
+    padding: 10px 20px;
+    background-image: url('../../../assets/img/background.png');
+    background-repeat: no-repeat;
+    background-position-y: 50px;
+    background-position-x: 100px;
+    background-color: rgba(191, 190, 199, 0.904);
+    width: 100%;
+    min-height: 600px;
+}
+.message{
+    margin-right: 50px;
+    padding-top:250px;
+    padding-right: 100px;
+    text-align: right;
+    font-weight: bold;
+    font-size: 30px;
+}
+
+.btn-box{
+    padding-top:20px;
+    padding-right: 150px;
+    text-align: right;
+}
+.name-box{
+    padding-top:20px;
+    padding-right: 150px;
+    text-align: right;
+}
+
+
+button {
+	border-radius: 20px;
+	border: 1px solid rgb(4, 82, 248);
+	background-color: rgba(4, 82, 248, 0.818);
+	color: #FFFFFF;
+	font-size: 12px;
+	font-weight: bold;
+	padding: 12px 45px;
+	letter-spacing: 1px;
+	text-transform: uppercase;
+	transition: transform 80ms ease-in;
+}
+
+button:hover {
+	cursor: pointer;
+}
+
+button:disabled {
+	border: 1px solid rgba(168, 168, 168, 0.818);
+	background-color: rgba(168, 168, 168, 0.818);
+}
+
+button:active {
+	transform: scale(0.95);
+}
+
+button:focus {
+	outline: none;
+}
+
+.fade-in {
+    animation: fadeIn ease 10s;
+    -webkit-animation: fadeIn ease 10s;
+    -moz-animation: fadeIn ease 10s;
+    -o-animation: fadeIn ease 10s;
+    -ms-animation: fadeIn ease 10s;
+    }
+    @keyframes fadeIn {
+    0% {opacity:0;}
+    100% {opacity:1;}
+    }
+    
+    @-moz-keyframes fadeIn {
+    0% {opacity:0;}
+    100% {opacity:1;}
+    }
+    
+    @-webkit-keyframes fadeIn {
+    0% {opacity:0;}
+    100% {opacity:1;}
+    }
+    
+    @-o-keyframes fadeIn {
+    0% {opacity:0;}
+    100% {opacity:1;}
+    }
+    
+    @-ms-keyframes fadeIn {
+    0% {opacity:0;}
+    100% {opacity:1;}
+    }

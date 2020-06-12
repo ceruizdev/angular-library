@@ -1,0 +1,59 @@
+<div class="bookContainer">
+    <h2>Libros registrados</h2>
+    <hr />
+    <div class="options">
+        <div>
+          <div>
+            <form action="#" [formGroup]="BuscadorForm" (ngSubmit)="buscar()" class="margin20">
+              <mat-form-field  class="full-width">
+                <mat-label>Tipo de busqueda</mat-label>
+                <mat-select formControlName="tipoFiltro" class="full-width">
+                    <mat-option [value]="1">Nombre de libro</mat-option>
+                    <mat-option [value]="2">Autor</mat-option>
+                    <mat-option [value]="3">Categoria</mat-option>
+                </mat-select>
+            </mat-form-field>
+            <mat-form-field class="margin20">
+              <input matInput type="text" placeholder="Nombres" formControlName="filtro" />             
+          </mat-form-field>
+            <button mat-raised-button type="submit" color="primary" class="blue-library" [disabled]="BuscadorForm.invalid">Buscar</button>
+          </form>
+            
+          </div>
+        </div>
+        <button mat-raised-button color="primary" class="blue-library" (click)="newBook()"><mat-icon>add_circle</mat-icon> Nuevo libro</button>
+    </div> 
+    <div class="booksMsg" *ngIf="books?.length == 0">
+      <b>No se encontraron resultados</b>
+    </div> 
+    <div class="books" *ngIf="books?.length > 0">
+        <mat-card class="card" *ngFor="let book of books">
+          <div mat-card-avatar class="example-header-image"></div>
+            <mat-card-content>
+              <h2 class="center">
+                {{book.id}}. {{book.name}}
+              </h2>
+            </mat-card-content>
+            <mat-card-content>
+              <p class="center">
+                <b>Detalle:</b> {{book.details}}
+              </p>
+              <p class="center">
+                Fecha de registro {{book.publicationDate}}
+              </p>
+            </mat-card-content>
+            <mat-card-actions class="center">
+              <button mat-button (click)="updateBook(book.id)">Editar</button>
+              <button mat-button (click)="deleteBook(book.id)">Eliminar</button>
+            </mat-card-actions>
+          </mat-card>
+    </div>
+    <mat-paginator [length]="records"
+              [pageSize]="pageSize"
+              [pageSizeOptions]="pageSizeOptions"
+              [pageIndex]="pageIndex"
+              (page)="changePage($event)"
+              *ngIf="pagination">            
+    </mat-paginator>
+</div>
+

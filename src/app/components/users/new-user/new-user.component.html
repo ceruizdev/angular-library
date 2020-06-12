@@ -1,0 +1,48 @@
+<div class="login-box center"> 
+    <form action="#" [formGroup]="newUserForm" (ngSubmit)="saveUser()">
+        <h1>Registro de usuario</h1>
+        <div>
+            <mat-form-field class="full-width">
+                <input matInput type="text" placeholder="Nombres" formControlName="firstName"/> 
+                <span class="error" *ngIf="newUserForm.get('firstName').hasError('required') && newUserForm.get('firstName').touched">El campo nombre es requerido</span>
+            </mat-form-field>
+        </div>
+        <div>
+            <mat-form-field class="full-width">
+                <input matInput type="text" placeholder="Apellidos" formControlName="lastName" /> 
+                <span class="error" *ngIf="newUserForm.get('lastName').hasError('required') && newUserForm.get('lastName').touched">El campo apellido es requerido</span>
+            </mat-form-field>
+        </div>
+        <div>
+            <mat-form-field  class="full-width">
+                <input matInput type="email" placeholder="Email" formControlName="email" /> 
+                <span class="error" *ngIf="newUserForm.get('email').hasError('required') && newUserForm.get('email').touched">El campo email es requerido</span>
+                <span class="error" *ngIf="newUserForm.get('email').hasError('email')">Formato de email no valido</span>
+            </mat-form-field>
+        </div>
+         <div >
+            <mat-form-field class="full-width">
+                <input matInput type="password" placeholder="Contraseña" formControlName="password"/>
+                <span class="error" *ngIf="newUserForm.get('password').hasError('required') && newUserForm.get('password').touched">El campo contraseña es requerido</span>
+                <span class="error" *ngIf="newUserForm.get('password').hasError('minlength')">Debe contener al menos 5 caracteres</span>
+                <span class="error" *ngIf="newUserForm.get('password').hasError('maxlength')">Debe contener menos de 30 caracteres</span>         
+            </mat-form-field>
+         </div> 
+        
+        <mat-form-field class="full-width">
+            <mat-label>Tipo de usuario</mat-label>
+            <mat-select formControlName="userTypeFK">
+                <mat-option [value]="1">Administrador</mat-option>
+                <mat-option [value]="2">Basico</mat-option>
+            </mat-select>
+            <span class="error" *ngIf="newUserForm.get('userTypeFK').hasError('required') && newUserForm.get('userTypeFK').touched">El campo tipo de usuario es requerido</span>
+          </mat-form-field>
+        <br/>                   
+        <br />
+        <div class="error error-box">{{loginError}}</div>
+        <mat-dialog-actions class="center">
+            <button mat-button mat-dialog-close>Cerrar</button>
+            <button mat-raised-button color="primary" class="blue-library" [disabled]="newUserForm.invalid">Crear</button>
+        </mat-dialog-actions>
+    </form>
+</div>

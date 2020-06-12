@@ -1,0 +1,17 @@
+<div class="login-box center"> 
+    <form action="#" [formGroup]="editCategoryForm" (ngSubmit)="saveCategory()">
+        <h1>Registro de categorias</h1>
+        <div>
+            <mat-form-field class="full-width">
+                <input matInput type="text" placeholder="Nombres" formControlName="name" /> 
+                <span class="error" *ngIf="editCategoryForm.get('name').hasError('required') && editCategoryForm.get('name').touched">El campo nombre es requerido</span>
+            </mat-form-field>
+        </div>
+        
+        <div class="error error-box">{{loginError}}</div>
+        <mat-dialog-actions class="center">
+            <button mat-button mat-dialog-close>Cerrar</button>
+            <button mat-raised-button color="primary" class="blue-library" [disabled]="editCategoryForm.invalid">Actualizar</button>
+        </mat-dialog-actions>
+    </form>
+</div>

@@ -1,0 +1,22 @@
+<div class="main-wrapper">
+  <header>
+    <div id="logo">
+       <h1><img src="assets/img/white-book.svg" width="27px"> Library</h1>
+    </div>
+    <div id="menu" class="menu">
+        <nav>
+          <ul>
+            <li><a routerLink="/home" routerLinkActive="active">Home</a></li>
+            <li *ngIf="showUserOptions()"><a routerLink="/users" routerLinkActive="active">Usuarios</a></li>
+            <li *ngIf="showUserOptions()"><a routerLink="/books" routerLinkActive="active">Libros</a></li>
+            <li *ngIf="showUserOptions()"><a routerLink="/authors" routerLinkActive="active">Autores</a></li>
+            <li *ngIf="showUserOptions()"><a routerLink="/categories" routerLinkActive="active">Categorías</a></li>
+            <li *ngIf="showUserOptions()"><a routerLink="/logout" routerLinkActive="active">Cerrar Sesión</a></li>        
+          </ul>
+        </nav>
+    </div>
+  </header>
+  <div>
+    <router-outlet></router-outlet>
+  </div>
+</div>

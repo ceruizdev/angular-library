@@ -1,0 +1,37 @@
+<div class="authorContainer">
+    <h2>Autores registrados</h2>
+    <hr />
+    <div class="options">
+        <button mat-raised-button color="primary" class="blue-library" (click)="newAuthor()"><mat-icon>add_circle</mat-icon> Nuevo autor</button>
+    </div>  
+    <div class="authores">
+        <mat-card class="card" *ngFor="let author of authors">
+            <mat-card-header>
+              <div mat-card-avatar class="example-header-image"></div>
+              <mat-card-title>{{author.id}}. {{author.firstName}} {{author.lastName}}</mat-card-title>
+              <mat-card-subtitle>{{author.nationality}}</mat-card-subtitle>
+            </mat-card-header>
+            <mat-card-content>
+              <p class="center">
+                Fecha de nacimiento {{author.birthdate | date}}
+              </p>
+            </mat-card-content>
+            <mat-card-content>
+              <p class="center">
+                 {{ author.lifeStatus == '1' ? 'Vivo': 'Muerto' }}
+              </p>
+            </mat-card-content>
+            <mat-card-actions class="center">
+              <button mat-button (click)="updateAuthor(author.id)">Editar</button>
+              <button mat-button (click)="deleteAuthor(author.id)">Eliminar</button>
+            </mat-card-actions>
+          </mat-card>
+    </div>
+    <mat-paginator [length]="records"
+              [pageSize]="pageSize"
+              [pageSizeOptions]="pageSizeOptions"
+              [pageIndex]="pageIndex"
+              (page)="changePage($event)">            
+    </mat-paginator>
+</div>
+

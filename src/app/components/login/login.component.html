@@ -1,0 +1,18 @@
+<div class="loginContainer">
+    <div class="login-box"> 
+        <form action="#" [formGroup]="loginForm" (ngSubmit)="login(loginForm)">
+            <h1>Iniciar sesión</h1>
+            <span>Si no tiene una cuenta registrese <a routerLink="/signup">aqui</a></span>
+            <input type="email" placeholder="Email" formControlName="email" />
+            <span class="error" *ngIf="loginForm.get('email').hasError('required') && loginForm.get('email').touched">El campo email es requerido</span>
+            <span class="error" *ngIf="loginForm.get('email').hasError('email')">Formato de email no valido</span>
+            <input type="password" placeholder="Contraseña" formControlName="password"/>
+            <span class="error" *ngIf="loginForm.get('password').hasError('required') && loginForm.get('password').touched">El campo contraseña es requerido</span>
+            <span class="error" *ngIf="loginForm.get('password').hasError('minlength')">Debe contener al menos 5 caracteres</span>
+            <span class="error" *ngIf="loginForm.get('password').hasError('maxlength')">Debe contener menos de 30 caracteres</span>
+            <br />
+            <div class="error error-box">{{loginError}}</div>
+            <button type="submit" [disabled]="loginForm.invalid">Ingresar</button>
+        </form>
+    </div>
+</div>

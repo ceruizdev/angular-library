@@ -1,0 +1,52 @@
+<div class="login-box center"> 
+    <form action="#" [formGroup]="newBookForm" (ngSubmit)="saveBook()">
+        <h1>Registro de libros</h1>
+        <div>
+            <mat-form-field class="full-width">
+                <input matInput type="text" placeholder="ISBN" formControlName="isbn" /> 
+                <span class="error" *ngIf="newBookForm.get('isbn').hasError('required') && newBookForm.get('isbn').touched">El campo ISBN es requerido</span>
+            </mat-form-field>
+            <mat-form-field class="full-width">
+                <input matInput type="text" placeholder="Nombre del titulo" formControlName="name" /> 
+                <span class="error" *ngIf="newBookForm.get('name').hasError('required') && newBookForm.get('name').touched">El campo nombre es requerido</span>
+            </mat-form-field>
+            <mat-form-field class="full-width">
+                <input matInput type="text" placeholder="Detalles" formControlName="details" /> 
+                <span class="error" *ngIf="newBookForm.get('details').hasError('required') && newBookForm.get('details').touched">El campo detelles es requerido</span>
+            </mat-form-field>
+            <div>
+                <mat-form-field  class="full-width">
+                 <mat-label>Autor</mat-label>
+                  <mat-select formControlName="authorFk" class="full-width">
+                    <mat-option *ngFor="let author of authors" [value]="author.id">{{author.firstName}} {{author.lastName}}</mat-option>
+                </mat-select>
+                <span class="error" *ngIf="newBookForm.get('authorFk').hasError('required') && newBookForm.get('authorFk').touched">El campo autor es requerido</span>
+              </mat-form-field>
+            </div>
+            <div>
+                <mat-form-field  class="full-width">
+                    <mat-label>Categoria</mat-label>
+                    <mat-select formControlName="categoryFk" class="full-width">
+                        <mat-option *ngFor="let category of categories" [value]="category.id">{{category.name}}</mat-option>
+                    </mat-select>
+                <span class="error" *ngIf="newBookForm.get('categoryFk').hasError('required') && newBookForm.get('categoryFk').touched">El campo categoria es requerido</span>
+              </mat-form-field>
+            </div>
+            <div>
+                <mat-form-field color="accent"  class="full-width">
+                    <mat-label>Fecha de publicación</mat-label>
+                    <input matInput [matDatepicker]="picker1" formControlName="publicationDate"  class="full-width">
+                    <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+                    <mat-datepicker #picker1></mat-datepicker>
+                    <span class="error" *ngIf="newBookForm.get('publicationDate').hasError('required') && newBookForm.get('publicationDate').touched">El campo fecha de publicación es requerido</span>
+                  </mat-form-field>      
+            </div>
+        </div>
+        
+        <div class="error error-box">{{loginError}}</div>
+        <mat-dialog-actions class="center">
+            <button mat-button mat-dialog-close>Cerrar</button>
+            <button mat-raised-button color="primary" class="blue-library" [disabled]="newBookForm.invalid">Crear</button>
+        </mat-dialog-actions>
+    </form>
+</div>

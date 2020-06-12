@@ -1,0 +1,53 @@
+<div class="login-box center"> 
+    <form action="#" [formGroup]="editAuthorForm" (ngSubmit)="saveAuthor()">
+        <h1>Registro de usuario</h1>
+        <div>
+            <mat-form-field class="full-width">
+                <input matInput type="text" placeholder="Nombres" formControlName="firstName" /> 
+                <span class="error" *ngIf="editAuthorForm.get('firstName').hasError('required') && editAuthorForm.get('firstName').touched">El campo nombre es requerido</span>
+            </mat-form-field>
+        </div>
+        <div>
+            <mat-form-field class="full-width">
+                <input matInput type="text" placeholder="Apellidos" formControlName="lastName" /> 
+                <span class="error" *ngIf="editAuthorForm.get('lastName').hasError('required') && editAuthorForm.get('lastName').touched">El campo apellido es requerido</span> 
+            </mat-form-field>
+        </div>
+        <div>
+            <mat-form-field class="full-width">
+                <input matInput type="text" placeholder="Nacionalidad" formControlName="nationality" /> 
+                <span class="error" *ngIf="editAuthorForm.get('nationality').hasError('required') && editAuthorForm.get('nationality').touched">El campo estado autor es requerido</span>
+            </mat-form-field>
+        </div>
+       <div>
+        <mat-form-field class="full-width">
+            <input matInput type="number" placeholder="Edad" formControlName="age" /> 
+            <span class="error" *ngIf="editAuthorForm.get('age').hasError('required') && editAuthorForm.get('age').touched">El edad es requerido</span>
+        </mat-form-field>
+       </div>
+        <div>
+            <mat-form-field color="accent"  class="full-width">
+                <mat-label>Fecha de nacimiento</mat-label>
+                <input matInput [matDatepicker]="picker1" formControlName="birthdate"  class="full-width">
+                <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+                <mat-datepicker #picker1></mat-datepicker>
+                <span class="error" *ngIf="editAuthorForm.get('birthdate').hasError('required') && editAuthorForm.get('birthdate').touched">El campo estado autor es requerido</span>
+              </mat-form-field>      
+        </div>
+        <div>
+            <mat-form-field  class="full-width">
+                <mat-label>Estado actual</mat-label>
+            <mat-select formControlName="lifeStatus" class="full-width">
+                <mat-option [value]="1">Vivo</mat-option>
+                <mat-option [value]="0">Fallecido</mat-option>
+            </mat-select>
+            <span class="error" *ngIf="editAuthorForm.get('lifeStatus').hasError('required') && editAuthorForm.get('lifeStatus').touched">El campo estado autor es requerido</span>
+          </mat-form-field>
+        </div>
+        <div class="error error-box">{{loginError}}</div>
+        <mat-dialog-actions class="center">
+            <button mat-button mat-dialog-close>Cerrar</button>
+            <button mat-raised-button color="primary" class="blue-library" [disabled]="editAuthorForm.invalid">Actualizar</button>
+        </mat-dialog-actions>
+    </form>
+</div>

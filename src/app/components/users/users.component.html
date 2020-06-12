@@ -1,0 +1,33 @@
+
+<div class="usersContainer">
+    <h2>Usuarios registrados</h2>
+    <hr />
+    <div class="options">
+        <button mat-raised-button color="primary" class="blue-library" (click)="newUser()"><mat-icon>add_circle</mat-icon> Nuevo usuario</button>
+    </div>  
+    <div class="usuarios">
+        <mat-card class="card" *ngFor="let user of users">
+            <mat-card-header>
+              <div mat-card-avatar class="example-header-image"></div>
+              <mat-card-title>{{user.id}}. {{user.firstName}} {{user.lastName}}</mat-card-title>
+              <mat-card-subtitle>{{user.email}}</mat-card-subtitle>
+            </mat-card-header>
+            <mat-card-content>
+                <p class="center">
+                  Registrado desde {{user.creationDate | date}}
+                </p>
+              </mat-card-content>
+            <mat-card-actions class="center">
+              <button mat-button (click)="updateUser(user.id)">Editar</button>
+              <button mat-button (click)="deleteUser(user.id)">Eliminar</button>
+            </mat-card-actions>
+          </mat-card>
+    </div>
+    <mat-paginator [length]="records"
+              [pageSize]="pageSize"
+              [pageSizeOptions]="pageSizeOptions"
+              [pageIndex]="pageIndex"
+              (page)="changePage($event)">            
+    </mat-paginator>
+</div>
+

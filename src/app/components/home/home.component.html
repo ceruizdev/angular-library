@@ -1,0 +1,12 @@
+<div class="homeContainer">
+    <div class="message"> 
+        <span class="auto-complete"></span>       
+    </div> 
+    <div class="name-box fade-in">
+        {{name}}
+    </div>
+    <div class="btn-box fade-in" *ngIf="loggedUser">
+        <button id="btnLoginRedirect" [routerLink]="'/login'">Ingresa con tu usuario</button>
+    </div>
+      
+</div>
